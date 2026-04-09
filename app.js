@@ -8,32 +8,27 @@ const PHASE_1 = {
   name: 'Fáze 1: Základ (duben–květen)',
   days: {
     1: {
-      name: 'Den 1 — Horní tělo + lezení',
+      name: 'Posilovna',
       exercises: [
-        { id: 'p1d1e1', name: 'Klik na bradlech', detail: '3 × 8–10, bez zadržování dechu' },
+        { id: 'p1d1e1', name: 'Bench press', detail: '3 × 10, střední váha' },
         { id: 'p1d1e2', name: 'Shyby nadhmatem', detail: '3 × 6–8, plný rozsah' },
-        { id: 'p1d1e3', name: 'Bench press', detail: '3 × 10, střední váha' },
-        { id: 'p1d1e4', name: 'Seated cable row', detail: '3 × 10–12, uvolněné břicho' },
-        { id: 'p1d1e5', name: 'Lezení slab/vertikála', detail: '60–90 min, bez převisů' }
+        { id: 'p1d1e3', name: 'Seated cable row', detail: '3 × 10–12, uvolněné břicho' },
+        { id: 'p1d1e4', name: 'Overhead press', detail: '3 × 10–12, lehčí váha' },
+        { id: 'p1d1e5', name: 'Klik na bradlech', detail: '3 × 8–10, bez zadržování dechu' },
+        { id: 'p1d1e6', name: 'Lateral raise', detail: '3 × 12–15' },
+        { id: 'p1d1e7', name: 'Face pull', detail: '3 × 15' },
+        { id: 'p1d1e8', name: 'Dead bug', detail: '3 × 10 každá strana' },
+        { id: 'p1d1e9', name: 'Pallof press', detail: '3 × 12' },
+        { id: 'p1d1e10', name: 'Plank', detail: '3 × max 45 sec, volně dýchat' }
       ]
     },
     2: {
-      name: 'Den 2 — Kondice + core',
+      name: 'Lezení',
       exercises: [
-        { id: 'p1d2e1', name: 'Kolo / veslařský trenažér', detail: '20–30 min Z2' },
-        { id: 'p1d2e2', name: 'Dead bug', detail: '3 × 10 každá strana' },
-        { id: 'p1d2e3', name: 'Pallof press', detail: '3 × 12' },
-        { id: 'p1d2e4', name: 'Bird-dog', detail: '3 × 10 každá strana' },
-        { id: 'p1d2e5', name: 'Plank', detail: '3 × max 45 sec, volně dýchat' }
-      ]
-    },
-    3: {
-      name: 'Den 3 — Lezení + ramena',
-      exercises: [
-        { id: 'p1d3e1', name: 'Lezení technické cesty', detail: '60–90 min, bez boulderu' },
-        { id: 'p1d3e2', name: 'Overhead press', detail: '3 × 10–12, lehčí váha' },
-        { id: 'p1d3e3', name: 'Lateral raise', detail: '3 × 12–15' },
-        { id: 'p1d3e4', name: 'Face pull', detail: '3 × 15' }
+        { id: 'p1d2e1', name: 'Lezení slab/vertikála', detail: '60–90 min, bez převisů' },
+        { id: 'p1d2e2', name: 'Lezení technické cesty', detail: 'Footwork a balans' },
+        { id: 'p1d2e3', name: 'Bird-dog', detail: '3 × 10 každá strana' },
+        { id: 'p1d2e4', name: 'Antagonisté prstů', detail: '3 × 10' }
       ]
     }
   }
@@ -43,29 +38,27 @@ const PHASE_2 = {
   name: 'Fáze 2: Progrese (červen–srpen)',
   days: {
     1: {
-      name: 'Den 1 — Síla horní tělo',
+      name: 'Posilovna',
       exercises: [
-        { id: 'p2d1e1', name: 'Weighted pull-ups', detail: '4 × 5–6' },
-        { id: 'p2d1e2', name: 'Bench press', detail: '4 × 6–8, progrese váhy' },
+        { id: 'p2d1e1', name: 'Bench press', detail: '4 × 6–8, progrese váhy' },
+        { id: 'p2d1e2', name: 'Weighted pull-ups', detail: '4 × 5–6' },
         { id: 'p2d1e3', name: 'Chest-supported row', detail: '4 × 8–10' },
-        { id: 'p2d1e4', name: 'Dips', detail: '3 × 8–10' }
+        { id: 'p2d1e4', name: 'Overhead press', detail: '3 × 8–10, progrese váhy' },
+        { id: 'p2d1e5', name: 'Dips', detail: '3 × 8–10' },
+        { id: 'p2d1e6', name: 'Lateral raise', detail: '3 × 12–15' },
+        { id: 'p2d1e7', name: 'Face pull', detail: '3 × 15' },
+        { id: 'p2d1e8', name: 'Dead bug s váhou', detail: '3 × 12 každá strana' },
+        { id: 'p2d1e9', name: 'Pallof press těžší', detail: '3 × 10' },
+        { id: 'p2d1e10', name: 'Copenhagen plank', detail: '3 × 20 sec, vynechat při bolesti' }
       ]
     },
     2: {
-      name: 'Den 2 — Lezení forma',
+      name: 'Lezení',
       exercises: [
         { id: 'p2d2e1', name: 'Technika pohybu', detail: '60 min, footwork a balans' },
         { id: 'p2d2e2', name: 'Slab a vertikála', detail: '30 min' },
-        { id: 'p2d2e3', name: 'Antagonisté prstů', detail: '3 × 10' }
-      ]
-    },
-    3: {
-      name: 'Den 3 — Kondice + core',
-      exercises: [
-        { id: 'p2d3e1', name: 'Plavání', detail: '30–40 min' },
-        { id: 'p2d3e2', name: 'Dead bug s váhou', detail: '3 × 12 každá strana' },
-        { id: 'p2d3e3', name: 'Pallof press těžší', detail: '3 × 10' },
-        { id: 'p2d3e4', name: 'Copenhagen plank', detail: '3 × 20 sec, vynechat při bolesti' }
+        { id: 'p2d2e3', name: 'Antagonisté prstů', detail: '3 × 10' },
+        { id: 'p2d2e4', name: 'Bird-dog', detail: '3 × 10 každá strana' }
       ]
     }
   }
@@ -136,14 +129,6 @@ function getPhaseData(phase) {
   return phase === 1 ? PHASE_1 : PHASE_2;
 }
 
-function getTrainingDay(date) {
-  const dow = date.getDay();
-  if (dow === 1) return 1;
-  if (dow === 3) return 2;
-  if (dow === 5) return 3;
-  return null;
-}
-
 // ── Tab Switching ──
 function switchTab(tabName) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -169,9 +154,8 @@ function renderDaySelector() {
 
   const options = [
     { value: null, label: 'Jen strečink' },
-    { value: 1, label: phaseData.days[1].name.replace('Den 1 — ', '') },
-    { value: 2, label: phaseData.days[2].name.replace('Den 2 — ', '') },
-    { value: 3, label: phaseData.days[3].name.replace('Den 3 — ', '') }
+    { value: 1, label: phaseData.days[1].name },
+    { value: 2, label: phaseData.days[2].name }
   ];
 
   container.innerHTML = options.map(opt =>
@@ -438,19 +422,22 @@ async function renderStreaks() {
   const workoutDates = new Set((workouts.data || []).map(w => w.date));
   const stretchDates = new Set((stretches.data || []).map(s => s.date));
 
-  // Training streak: consecutive scheduled training days with a log
+  // Training streak: count consecutive workout logs going backwards
   let trainingStreak = 0;
-  const d = new Date(today);
-  for (let i = 0; i < 90; i++) {
-    const dayNum = getTrainingDay(d);
-    if (dayNum !== null) {
-      if (workoutDates.has(formatDate(d))) {
-        trainingStreak++;
-      } else {
-        break;
-      }
+  const sortedWorkouts = [...workoutDates].sort().reverse();
+  for (let i = 0; i < sortedWorkouts.length; i++) {
+    if (i === 0) {
+      // Most recent workout must be today or yesterday to count
+      const diff = (today - new Date(sortedWorkouts[i])) / (1000 * 60 * 60 * 24);
+      if (diff > 1) break;
+    } else {
+      // Each subsequent workout must be within 3 days of the previous (allow rest days)
+      const prev = new Date(sortedWorkouts[i - 1]);
+      const curr = new Date(sortedWorkouts[i]);
+      const gap = (prev - curr) / (1000 * 60 * 60 * 24);
+      if (gap > 3) break;
     }
-    d.setDate(d.getDate() - 1);
+    trainingStreak++;
   }
 
   // Morning stretch streak: consecutive days
@@ -533,18 +520,18 @@ async function renderCalendar() {
 
     if (workout && workout.pain_level >= 4) {
       cls += ' pain-high';
-    } else if (workout || stretch) {
-      const dayNum = getTrainingDay(dateObj);
-      if (dayNum !== null && workout) {
-        const phaseData = getPhaseData(getPhase(dateObj));
-        const expected = phaseData.days[dayNum].exercises.length;
+    } else if (workout) {
+      const phaseData = getPhaseData(getPhase(dateObj));
+      const dayData = phaseData.days[workout.day_number];
+      if (dayData) {
+        const expected = dayData.exercises.length;
         const done = (workout.exercises_completed || []).length;
         cls += done >= expected ? ' full' : ' partial';
-      } else if (dayNum === null && stretch) {
-        cls += ' full';
-      } else if (stretch) {
+      } else {
         cls += ' partial';
       }
+    } else if (stretch) {
+      cls += ' full';
     }
 
     html += `<div class="${cls}">${day}</div>`;
