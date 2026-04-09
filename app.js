@@ -153,7 +153,6 @@ function renderDaySelector() {
   const container = document.getElementById('day-selector');
 
   const options = [
-    { value: null, label: 'Jen strečink' },
     { value: 1, label: phaseData.days[1].name },
     { value: 2, label: phaseData.days[2].name }
   ];
@@ -183,19 +182,19 @@ function renderDayContent() {
   const now = new Date();
   const phaseData = getPhaseData(getPhase(now));
 
+  // Stretching always shows
+  renderStretches('morning-stretch-list', STRETCHING.morning.stretches);
+  document.getElementById('post-stretch-section').style.display = '';
+  renderStretches('post-stretch-list', STRETCHING.post_workout.stretches);
+
   if (selectedDay) {
     document.getElementById('training-section').style.display = '';
-    document.getElementById('post-stretch-section').style.display = '';
     document.getElementById('rest-day-msg').style.display = 'none';
     document.getElementById('training-title').textContent = phaseData.days[selectedDay].name;
     renderExercises(phaseData, selectedDay);
-    renderStretches('morning-stretch-list', STRETCHING.morning.stretches);
-    renderStretches('post-stretch-list', STRETCHING.post_workout.stretches);
   } else {
     document.getElementById('training-section').style.display = 'none';
-    document.getElementById('post-stretch-section').style.display = 'none';
     document.getElementById('rest-day-msg').style.display = '';
-    renderStretches('morning-stretch-list', STRETCHING.morning.stretches);
   }
 }
 
