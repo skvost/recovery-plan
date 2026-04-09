@@ -1,0 +1,517 @@
+:root {
+  --teal: #0d9488;
+  --teal-light: #ccfbf1;
+  --teal-dark: #0f766e;
+  --bg: #f8fafb;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --danger: #ef4444;
+  --danger-light: #fef2f2;
+  --warning: #f59e0b;
+  --warning-light: #fffbeb;
+  --success: #22c55e;
+  --success-light: #f0fdf4;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 16px 16px 90px;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+h2 {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 20px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Warning box */
+.warning-box {
+  background: var(--danger-light);
+  border: 2px solid var(--danger);
+  border-radius: var(--radius);
+  color: var(--danger);
+  font-weight: 700;
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+/* Phase badge */
+.phase-badge {
+  display: inline-block;
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Rest day message */
+.rest-day-msg {
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  padding: 16px;
+  border-radius: var(--radius);
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+/* Tab bar */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  display: flex;
+  z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-top: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn.active {
+  color: var(--teal);
+  border-top-color: var(--teal);
+}
+
+/* Tab content */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Exercise / stretch cards */
+.exercise-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  box-shadow: var(--shadow);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.exercise-card:active {
+  background: var(--bg);
+}
+
+.exercise-card.checked {
+  background: var(--success-light);
+}
+
+.exercise-card input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  accent-color: var(--teal);
+  cursor: pointer;
+}
+
+.exercise-info {
+  flex: 1;
+}
+
+.exercise-name {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.exercise-detail {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Pain selector */
+.pain-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.pain-btn {
+  flex: 1;
+  height: 52px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  background: var(--card);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.pain-btn .pain-label {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.pain-btn.selected-1,
+.pain-btn.selected-2 {
+  border-color: var(--success);
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.pain-btn.selected-3 {
+  border-color: var(--warning);
+  background: var(--warning-light);
+  color: var(--warning);
+}
+
+.pain-btn.selected-4,
+.pain-btn.selected-5 {
+  border-color: var(--danger);
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+/* Notes */
+label {
+  display: block;
+  font-weight: 600;
+  margin: 20px 0 8px;
+  font-size: 14px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-family: inherit;
+  resize: vertical;
+  background: var(--card);
+  -webkit-appearance: none;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+}
+
+/* Save button */
+.btn-save {
+  width: 100%;
+  padding: 16px;
+  margin-top: 20px;
+  background: var(--teal);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-save:active {
+  background: var(--teal-dark);
+}
+
+.btn-save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#save-status {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--success);
+  min-height: 20px;
+}
+
+/* Plan tab */
+.plan-phase {
+  margin-bottom: 24px;
+}
+
+.plan-phase-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--teal-dark);
+  margin-bottom: 12px;
+}
+
+.plan-day {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.plan-day-header {
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.plan-day-header:active {
+  background: var(--bg);
+}
+
+.plan-day-header .chevron {
+  transition: transform 0.3s;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.plan-day.open .chevron {
+  transform: rotate(180deg);
+}
+
+.plan-day-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.plan-day.open .plan-day-body {
+  max-height: 500px;
+}
+
+.plan-exercise {
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.plan-exercise-name {
+  font-weight: 500;
+}
+
+.plan-exercise-detail {
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+/* Streaks */
+.streaks-container {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.streak-card {
+  flex: 1;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  text-align: center;
+}
+
+.streak-number {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--teal);
+}
+
+.streak-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Calendar */
+.calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.calendar-nav button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px 12px;
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.calendar-month {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.calendar-day-name {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 4px 0;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.calendar-day.today {
+  border: 2px solid var(--teal);
+}
+
+.calendar-day.full {
+  background: var(--success);
+  color: white;
+}
+
+.calendar-day.partial {
+  background: var(--warning);
+  color: white;
+}
+
+.calendar-day.pain-high {
+  background: var(--danger);
+  color: white;
+}
+
+/* Pain chart */
+.pain-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 120px;
+  padding: 0 4px;
+  margin-bottom: 8px;
+}
+
+.pain-bar {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+  min-width: 6px;
+  transition: height 0.3s;
+}
+
+.pain-bar.level-1,
+.pain-bar.level-2 {
+  background: var(--success);
+}
+
+.pain-bar.level-3 {
+  background: var(--warning);
+}
+
+.pain-bar.level-4,
+.pain-bar.level-5 {
+  background: var(--danger);
+}
+
+.pain-chart-labels {
+  display: flex;
+  gap: 3px;
+  padding: 0 4px;
+  margin-bottom: 20px;
+}
+
+.pain-chart-labels span {
+  flex: 1;
+  text-align: center;
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+/* Warnings */
+.warning-card {
+  background: var(--warning-light);
+  border: 1px solid var(--warning);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #92400e;
+}
+
+.warning-card.danger {
+  background: var(--danger-light);
+  border-color: var(--danger);
+  color: #991b1b;
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+  body {
+    max-width: 480px;
+  }
+}

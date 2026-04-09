@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Recovery Plan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="warning-box">⚠️ Zakázáno: dřepy, deadlift, leg press</div>
+
+  <main id="tab-today" class="tab-content active">
+    <h1 id="today-title"></h1>
+    <p id="today-phase" class="phase-badge"></p>
+    <p id="rest-day-msg" class="rest-day-msg" style="display:none">Dnes není trénink, nezapomeň na protažení 🧘</p>
+
+    <section id="training-section" style="display:none">
+      <h2>Trénink</h2>
+      <div id="exercise-list"></div>
+    </section>
+
+    <section id="morning-stretch-section">
+      <h2>Ranní strečink</h2>
+      <div id="morning-stretch-list"></div>
+    </section>
+
+    <section id="post-stretch-section" style="display:none">
+      <h2>Strečink po tréninku</h2>
+      <div id="post-stretch-list"></div>
+    </section>
+
+    <section id="pain-section">
+      <h2>Úroveň bolesti</h2>
+      <div class="pain-selector" id="pain-selector"></div>
+    </section>
+
+    <section>
+      <label for="notes">Poznámky</label>
+      <textarea id="notes" rows="3" placeholder="Jak se cítíš?"></textarea>
+    </section>
+
+    <button id="save-btn" class="btn-save" onclick="handleSave()">Uložit</button>
+    <div id="save-status"></div>
+  </main>
+
+  <main id="tab-plan" class="tab-content">
+    <h1>Tréninkový plán</h1>
+    <div id="plan-content"></div>
+  </main>
+
+  <main id="tab-progress" class="tab-content">
+    <h1>Přehled</h1>
+    <div id="streaks"></div>
+    <div id="calendar-container"></div>
+    <h2>Bolest — posledních 30 dní</h2>
+    <div id="pain-chart"></div>
+    <div id="warnings"></div>
+  </main>
+
+  <nav class="tab-bar">
+    <button class="tab-btn active" data-tab="today" onclick="switchTab('today')">Dnes</button>
+    <button class="tab-btn" data-tab="plan" onclick="switchTab('plan')">Plán</button>
+    <button class="tab-btn" data-tab="progress" onclick="switchTab('progress')">Přehled</button>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
