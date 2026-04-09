@@ -84,6 +84,37 @@ h2 {
   margin-bottom: 16px;
 }
 
+/* Day selector */
+.day-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.day-btn {
+  flex: 1;
+  padding: 10px 4px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.day-btn.active {
+  border-color: var(--teal);
+  background: var(--teal-light);
+  color: var(--teal-dark);
+}
+
+.day-btn:active {
+  transform: scale(0.96);
+}
+
 /* Tab bar */
 .tab-bar {
   position: fixed;

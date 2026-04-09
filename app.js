@@ -100,6 +100,7 @@ const PAIN_LABELS = {
 
 // ── State ──
 let selectedPain = null;
+let selectedDay = null; // null = rest/stretch only, 1/2/3 = training day
 let calendarYear, calendarMonth;
 
 // ── Init ──
@@ -107,7 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const now = new Date();
   calendarYear = now.getFullYear();
   calendarMonth = now.getMonth();
-  renderToday();
+  renderTodayHeader();
+  renderDaySelector();
   renderPlan();
   renderPainSelector();
   loadTodayData();
@@ -152,21 +154,57 @@ function switchTab(tabName) {
 }
 
 // ── Dnes Tab ──
-function renderToday() {
+function renderTodayHeader() {
   const now = new Date();
-  const phase = getPhase(now);
-  const dayNum = getTrainingDay(now);
-  const phaseData = getPhaseData(phase);
-
+  const phaseData = getPhaseData(getPhase(now));
   document.getElementById('today-title').textContent =
     `${CZECH_DAYS[now.getDay()]} ${now.getDate()}. ${CZECH_MONTHS[now.getMonth()].toLowerCase()}`;
   document.getElementById('today-phase').textContent = phaseData.name;
+}
 
-  if (dayNum) {
+function renderDaySelector() {
+  const now = new Date();
+  const phaseData = getPhaseData(getPhase(now));
+  const container = document.getElementById('day-selector');
+
+  const options = [
+    { value: null, label: 'Jen strečink' },
+    { value: 1, label: phaseData.days[1].name.replace('Den 1 — ', '') },
+    { value: 2, label: phaseData.days[2].name.replace('Den 2 — ', '') },
+    { value: 3, label: phaseData.days[3].name.replace('Den 3 — ', '') }
+  ];
+
+  container.innerHTML = options.map(opt =>
+    `<button class="day-btn${selectedDay === opt.value ? ' active' : ''}" data-day="${opt.value}">${opt.label}</button>`
+  ).join('');
+
+  container.querySelectorAll('.day-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = btn.dataset.day === 'null' ? null : parseInt(btn.dataset.day);
+      selectDay(val);
+    });
+  });
+
+  renderDayContent();
+}
+
+function selectDay(dayNum) {
+  selectedDay = dayNum;
+  document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.day-btn[data-day="${dayNum}"]`).classList.add('active');
+  renderDayContent();
+}
+
+function renderDayContent() {
+  const now = new Date();
+  const phaseData = getPhaseData(getPhase(now));
+
+  if (selectedDay) {
     document.getElementById('training-section').style.display = '';
     document.getElementById('post-stretch-section').style.display = '';
     document.getElementById('rest-day-msg').style.display = 'none';
-    renderExercises(phaseData, dayNum);
+    document.getElementById('training-title').textContent = phaseData.days[selectedDay].name;
+    renderExercises(phaseData, selectedDay);
     renderStretches('morning-stretch-list', STRETCHING.morning.stretches);
     renderStretches('post-stretch-list', STRETCHING.post_workout.stretches);
   } else {
@@ -242,7 +280,7 @@ async function handleSave() {
     const now = new Date();
     const today = formatDate(now);
     const phase = getPhase(now);
-    const dayNum = getTrainingDay(now);
+    const dayNum = selectedDay;
 
     const checkedExercises = [...document.querySelectorAll('#exercise-list input:checked')].map(cb => cb.value);
     const morningStretches = [...document.querySelectorAll('#morning-stretch-list input:checked')].map(cb => cb.value);
@@ -311,6 +349,9 @@ async function loadTodayData() {
   ]);
 
   if (workoutRes.data) {
+    // Restore selected day from saved data
+    selectDay(workoutRes.data.day_number);
+
     (workoutRes.data.exercises_completed || []).forEach(id => {
       const cb = document.getElementById(`cb-${id}`);
       if (cb) {

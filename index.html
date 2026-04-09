@@ -15,10 +15,13 @@
   <main id="tab-today" class="tab-content active">
     <h1 id="today-title"></h1>
     <p id="today-phase" class="phase-badge"></p>
-    <p id="rest-day-msg" class="rest-day-msg" style="display:none">Dnes není trénink, nezapomeň na protažení 🧘</p>
+
+    <div class="day-selector" id="day-selector"></div>
+
+    <p id="rest-day-msg" class="rest-day-msg" style="display:none">Nezapomeň na protažení 🧘</p>
 
     <section id="training-section" style="display:none">
-      <h2>Trénink</h2>
+      <h2 id="training-title">Trénink</h2>
       <div id="exercise-list"></div>
     </section>
 
